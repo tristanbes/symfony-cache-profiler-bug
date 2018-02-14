@@ -1,11 +1,12 @@
 Cache profiler bug ?
 ====================
 
-bin/console server:run
+bin/console server:start
 
-http://127.0.0.1:8000/app_dev.php
+1. Visit the default url to populate the cache [http://127.0.0.1:8000/app_dev.php](http://127.0.0.1:8000/app_dev.php)
+2. Execute `bin/console test:clear:tags tag1` 
+3. Check your redis (for example with phpRedisAdmin) and see that the keys are still present, in addition, a new namespace is created.
 
-1. Go to profiler cache pannel : show 0 calls for pool app.cache.statistics 
-2. Go to profiler performance, select subrequest Menu, it shows x calls for pool app.cache.statistics 
 
-It's **disturbing** because the cache call were made on the main request (not on the sub request), so I don't get why it's ont the sub request profiler that the data is showing
+
+
